@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div class="admindiv" th:if="${isAdmin}">
+    <p>Shown for admin</p>
+</div>
+
+<div class="userdiv" th:if="${isUser}">
+    <p>Shown for user and admin</p>
+</div>
+
+<div class="everyonediv">
+    <p>Text seen by everyone (logged in or not)</p>
+
+    <button th:unless="${isUser}" onclick="location.href='/auth/site'">Login</button>
+    <button th:if="${isUser}" onclick="location.href='/auth/welcome'">Logout</button>
+</div>
+</body>
+
+</html>
